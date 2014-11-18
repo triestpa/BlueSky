@@ -12,6 +12,9 @@ class DetailViewController: UIViewController {
 
     var urlSession: NSURLSession!
     let apiID = "6b120251e9c87a7c31a21ee14f0a8eef"
+    
+    var weatherReport: NSDictionary!
+
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
@@ -56,16 +59,33 @@ class DetailViewController: UIViewController {
         let dataTask = urlSession.dataTaskWithURL(url!, completionHandler: {data, response, error in
             let response = NSString(data: data, encoding: NSUTF8StringEncoding)
             
-            /*
-            if let weatherReport = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) {
-                /*
-                self.messages = messages as NSArray
-                self.tableView.reloadData()
-                */
+            if let weatherReport: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as?NSDictionary {
+                self.weatherReport = weatherReport as NSDictionary
+
+                //Check for an error message in the response
+                if let errorMessage = weatherReport["message"] {
+                    let errorCode: NSString = weatherReport["cod"] as NSString
+                    println(errorMessage as NSString + ", Code: " + errorCode)
+                }
+                else {
+                    let weatherDataArray = weatherReport["weather"] as NSArray
+                    let weatherDataDict = weatherDataArray[0]
+                    self.detailDescriptionLabel.text = weatherDataDict["description"] as NSString
+                }
+                
+                //self.tableView.reloadData()
+                //update view
+                
+                //extract image using http://openweathermap.org/weather-conditions
+                
+
             }
-            */
+            else {
+                print("JSON Parse Error")
+            }
             
-            print(response)
+            
+
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
         
