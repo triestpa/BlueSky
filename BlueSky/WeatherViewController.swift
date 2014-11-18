@@ -8,42 +8,25 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class WeatherViewController: UIViewController {
 
     var urlSession: NSURLSession!
     let apiID = "6b120251e9c87a7c31a21ee14f0a8eef"
     
     var weatherReport: NSDictionary!
-
+    var weatherLocation: String!
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-
-    var detailItem: AnyObject? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
-        
+
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
         
-        queryOpenWeather(Location: "Boston")
+        if weatherLocation != nil {
+            queryOpenWeather(Location: weatherLocation)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +35,8 @@ class DetailViewController: UIViewController {
     }
     
     func queryOpenWeather(Location location: String) {
+        
+        let formatedLocation = location.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
         let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=" + apiID
         let url = NSURL(string: urlString as NSString)
