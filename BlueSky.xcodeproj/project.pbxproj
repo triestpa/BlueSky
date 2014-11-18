@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CDEF41201A1BA021009D4827 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF411F1A1BA021009D4827 /* AppDelegate.swift */; };
-		CDEF41221A1BA021009D4827 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41211A1BA021009D4827 /* MasterViewController.swift */; };
-		CDEF41241A1BA021009D4827 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41231A1BA021009D4827 /* DetailViewController.swift */; };
+		CDEF41221A1BA021009D4827 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */; };
+		CDEF41241A1BA021009D4827 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41231A1BA021009D4827 /* WeatherViewController.swift */; };
 		CDEF41271A1BA021009D4827 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDEF41251A1BA021009D4827 /* Main.storyboard */; };
 		CDEF41291A1BA021009D4827 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDEF41281A1BA021009D4827 /* Images.xcassets */; };
 		CDEF412C1A1BA021009D4827 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEF412A1A1BA021009D4827 /* LaunchScreen.xib */; };
@@ -30,8 +30,8 @@
 		CDEF411A1A1BA021009D4827 /* BlueSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEF411E1A1BA021009D4827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDEF411F1A1BA021009D4827 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDEF41211A1BA021009D4827 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		CDEF41231A1BA021009D4827 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		CDEF41231A1BA021009D4827 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		CDEF41261A1BA021009D4827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDEF41281A1BA021009D4827 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CDEF412B1A1BA021009D4827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				CDEF411F1A1BA021009D4827 /* AppDelegate.swift */,
-				CDEF41211A1BA021009D4827 /* MasterViewController.swift */,
-				CDEF41231A1BA021009D4827 /* DetailViewController.swift */,
+				CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */,
+				CDEF41231A1BA021009D4827 /* WeatherViewController.swift */,
 				CDEF41251A1BA021009D4827 /* Main.storyboard */,
 				CDEF41281A1BA021009D4827 /* Images.xcassets */,
 				CDEF412A1A1BA021009D4827 /* LaunchScreen.xib */,
@@ -215,8 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDEF41241A1BA021009D4827 /* DetailViewController.swift in Sources */,
-				CDEF41221A1BA021009D4827 /* MasterViewController.swift in Sources */,
+				CDEF41241A1BA021009D4827 /* WeatherViewController.swift in Sources */,
+				CDEF41221A1BA021009D4827 /* LocationTableViewController.swift in Sources */,
 				CDEF41201A1BA021009D4827 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
