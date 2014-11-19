@@ -35,10 +35,10 @@ class WeatherViewController: UIViewController {
     }
     
     func queryOpenWeather(Location location: String) {
-        
+        //Remove spaces to avoid malformed URLs
         let formatedLocation = location.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=" + apiID
+        let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + formatedLocation + "&APPID=" + apiID
         let url = NSURL(string: urlString as NSString)
         
         let dataTask = urlSession.dataTaskWithURL(url!, completionHandler: {data, response, error in
@@ -51,34 +51,22 @@ class WeatherViewController: UIViewController {
                 if let errorMessage = weatherReport["message"] {
                     let errorCode: NSString = weatherReport["cod"] as NSString
                     println(errorMessage as NSString + ", Code: " + errorCode)
+                    
                 }
                 else {
                     let weatherDataArray = weatherReport["weather"] as NSArray
                     let weatherDataDict = weatherDataArray[0]
                     self.detailDescriptionLabel.text = weatherDataDict["description"] as NSString
                 }
-                
-                //self.tableView.reloadData()
-                //update view
-                
                 //extract image using http://openweathermap.org/weather-conditions
-                
-
             }
             else {
                 print("JSON Parse Error")
             }
-            
-            
-
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
-        
-        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         dataTask.resume()
     }
-
-
 }
 

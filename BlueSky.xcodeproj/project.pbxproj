@@ -411,6 +411,7 @@
 				CDEF413D1A1BA021009D4827 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CDEF413E1A1BA021009D4827 /* Build configuration list for PBXNativeTarget "BlueSkyTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +420,7 @@
 				CDEF41401A1BA021009D4827 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

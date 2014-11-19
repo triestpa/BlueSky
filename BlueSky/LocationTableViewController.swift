@@ -11,8 +11,9 @@ import UIKit
 class LocationTableViewController: UITableViewController {
 
     var weatherViewController: WeatherViewController? = nil
-    var locations = NSMutableArray()
+    var locations: [String] = [] // = NSMutableArray()
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -40,20 +41,22 @@ class LocationTableViewController: UITableViewController {
     }
 
     func insertNewObject(sender: AnyObject) {
-        var alert = UIAlertController(title: "New Location", message: "Enter the location you would like to see weather for.", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "New Location", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
         alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { action in
             let locationTextField = alert.textFields?.last as UITextField
-            self.locations.insertObject(locationTextField.text, atIndex: 0)
+            self.locations.insert(locationTextField.text, atIndex: 0)
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Top)
+            self.performSegueWithIdentifier("showDetail", sender: self)
             }
         ))
         self.presentViewController(alert, animated: true, completion: nil)
+
     }
 
     // MARK: - Segues
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
@@ -67,7 +70,6 @@ class LocationTableViewController: UITableViewController {
     }
 
     // MARK: - Table View
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -78,7 +80,6 @@ class LocationTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
         let location = locations[indexPath.row] as NSString
         cell.textLabel.text = location
         return cell
@@ -88,10 +89,17 @@ class LocationTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
+    
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        let locationToMove = locations[fromIndexPath.row]
+        locations.removeAtIndex(fromIndexPath.row)
+        locations.insert(locationToMove, atIndex: toIndexPath.row)
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            locations.removeObjectAtIndex(indexPath.row)
+            locations.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
