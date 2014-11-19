@@ -60,7 +60,7 @@ class LocationTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let location = locations[indexPath.row] as NSString
                 let controller = (segue.destinationViewController as UINavigationController).topViewController as WeatherViewController
-                controller.weatherLocation = location
+                controller.setLocation(location)
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

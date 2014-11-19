@@ -14,19 +14,24 @@ class WeatherViewController: UIViewController {
     let apiID = "6b120251e9c87a7c31a21ee14f0a8eef"
     
     var weatherReport: NSDictionary!
-    var weatherLocation: String!
+    
+    var weatherLocation: String? {
+        didSet {
+            if isViewLoaded() {
+                queryOpenWeather(Location: weatherLocation!)
+            }
+        }
+    }
+    
+    func setLocation (location: NSString) {
+        self.weatherLocation = location
+    }
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-        urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-        
-        if weatherLocation != nil {
-            queryOpenWeather(Location: weatherLocation)
-        }
+        queryOpenWeather(Location: weatherLocation!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +40,9 @@ class WeatherViewController: UIViewController {
     }
     
     func queryOpenWeather(Location location: String) {
+        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+        
         //Remove spaces to avoid malformed URLs
         let formatedLocation = location.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
@@ -73,9 +81,11 @@ class WeatherViewController: UIViewController {
                         self.showErrorAlert("JSON Parse Error")
                     }
                 }
+                //Hide progress indicator
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             })
             
+            //Show progress indicator
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             dataTask.resume()
             

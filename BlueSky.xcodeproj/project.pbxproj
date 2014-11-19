@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD56A6201A1D19C9000E12FF /* TraitOverrideSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */; };
 		CDEF41201A1BA021009D4827 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF411F1A1BA021009D4827 /* AppDelegate.swift */; };
 		CDEF41221A1BA021009D4827 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */; };
 		CDEF41241A1BA021009D4827 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41231A1BA021009D4827 /* WeatherViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideSplitViewController.swift; sourceTree = "<group>"; };
 		CDEF411A1A1BA021009D4827 /* BlueSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEF411E1A1BA021009D4827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDEF411F1A1BA021009D4827 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				CDEF411F1A1BA021009D4827 /* AppDelegate.swift */,
 				CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */,
 				CDEF41231A1BA021009D4827 /* WeatherViewController.swift */,
+				CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */,
 				CDEF41251A1BA021009D4827 /* Main.storyboard */,
 				CDEF41281A1BA021009D4827 /* Images.xcassets */,
 				CDEF412A1A1BA021009D4827 /* LaunchScreen.xib */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD56A6201A1D19C9000E12FF /* TraitOverrideSplitViewController.swift in Sources */,
 				CDEF41241A1BA021009D4827 /* WeatherViewController.swift in Sources */,
 				CDEF41221A1BA021009D4827 /* LocationTableViewController.swift in Sources */,
 				CDEF41201A1BA021009D4827 /* AppDelegate.swift in Sources */,
