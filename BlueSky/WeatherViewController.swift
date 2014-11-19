@@ -10,8 +10,11 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var weatherConditionLabel: UILabel!
     
     var urlSession: NSURLSession!
     let apiID = "6b120251e9c87a7c31a21ee14f0a8eef"
@@ -32,8 +35,10 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = weatherLocation!
-        queryOpenWeather(Location: weatherLocation!)
+        if (weatherLocation != nil) {
+            navigationItem.title = weatherLocation?
+            queryOpenWeather(Location: weatherLocation!)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,7 +70,7 @@ class WeatherViewController: UIViewController {
             
             // Detect http request error
             if error != nil {
-                self.showErrorAlert("You broke the Internet. Just send a screenshot of this to the developer to find out what went wrong: \(error)")
+                self.showErrorAlert("You broke the Internet. Just send a screenshot of this to the developer, or try again in like an hour: \(error)")
             }
             else {
                 println(response)
@@ -93,8 +98,14 @@ class WeatherViewController: UIViewController {
             else {
                 let weatherDataArray = weatherReport["weather"] as NSArray
                 let weatherDataDict = weatherDataArray[0] as NSDictionary
-                self.detailDescriptionLabel.text = weatherDataDict["description"] as NSString
+                
+                let temperatureDict = weatherReport["main"] as NSDictionary
+                
+                self.currentTempLabel.text = (temperatureDict["temp"] as NSNumber).stringValue
                 self.iconImageView.image = UIImage(named: weatherDataDict["icon"] as NSString)
+                self.minTempLabel.text = (temperatureDict["temp_min"] as NSNumber).stringValue
+                self.maxTempLabel.text = (temperatureDict["temp_max"] as NSNumber).stringValue
+                self.weatherConditionLabel.text = weatherDataDict["description"] as NSString
             }
             //extract image using http://openweathermap.org/weather-conditions
         }

@@ -39,26 +39,53 @@
                                 </constraints>
                             </imageView>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="No Location Selected" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="230" y="333" width="140" height="17"/>
+                                <rect key="frame" x="205" y="326" width="190" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdz-Jn-yOs">
+                                <rect key="frame" x="105" y="380" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-kk-NVY">
+                                <rect key="frame" x="415" y="380" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rS-te-wck">
+                                <rect key="frame" x="231" y="425" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3mk-kk-NVY" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="30" id="2q0-GX-OVv"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerX" secondItem="3rS-te-wck" secondAttribute="centerX" constant="-2" id="2wN-Pt-QA3"/>
                             <constraint firstItem="cp7-0J-T2u" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" constant="200" id="6Cm-jk-GS8"/>
                             <constraint firstAttribute="centerX" secondItem="0XM-y9-sOw" secondAttribute="centerX" id="HJb-L6-cdv"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="cdz-Jn-yOs" secondAttribute="leading" constant="100" id="JHY-iU-KJn"/>
                             <constraint firstAttribute="centerX" secondItem="cp7-0J-T2u" secondAttribute="centerX" id="Jv7-fG-VD8"/>
+                            <constraint firstItem="3rS-te-wck" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="75" id="R8f-Xa-BCn"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="trailing" secondItem="3mk-kk-NVY" secondAttribute="trailing" constant="-100" id="fsa-ui-Zog"/>
                             <constraint firstItem="cp7-0J-T2u" firstAttribute="bottom" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="-50" id="qSI-dK-lhv"/>
+                            <constraint firstItem="cdz-Jn-yOs" firstAttribute="centerY" secondItem="3mk-kk-NVY" secondAttribute="centerY" id="vhh-3c-LMm"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Weather" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="currentTempLabel" destination="0XM-y9-sOw" id="QqK-l0-B0y"/>
                         <outlet property="iconImageView" destination="cp7-0J-T2u" id="bJe-ZD-u4g"/>
+                        <outlet property="maxTempLabel" destination="3mk-kk-NVY" id="mBl-Iq-H9n"/>
+                        <outlet property="minTempLabel" destination="cdz-Jn-yOs" id="N6V-uQ-yuM"/>
+                        <outlet property="weatherConditionLabel" destination="3rS-te-wck" id="PNN-Zp-Qfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -116,7 +143,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Locations" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,6 +166,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
