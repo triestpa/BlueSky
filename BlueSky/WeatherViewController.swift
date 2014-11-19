@@ -10,6 +10,9 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    
     var urlSession: NSURLSession!
     let apiID = "6b120251e9c87a7c31a21ee14f0a8eef"
     
@@ -27,10 +30,9 @@ class WeatherViewController: UIViewController {
         self.weatherLocation = location
     }
     
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = weatherLocation!
         queryOpenWeather(Location: weatherLocation!)
     }
     
@@ -49,50 +51,57 @@ class WeatherViewController: UIViewController {
         let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + formatedLocation + "&APPID=" + apiID
         
         if let url = NSURL(string: urlString as NSString) {
-            let dataTask = urlSession.dataTaskWithURL(url, completionHandler: {data, response, error in
-                let response = NSString(data: data, encoding: NSUTF8StringEncoding)
-                
-                // Detect http request error
-                if error != nil {
-                    self.showErrorAlert("You broke the Internet. Just send a screenshot of this to the developer to find out what went wrong: \(error)")
-                }
-                else {
-                    // Parse JSON
-                    if let weatherReport: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as?NSDictionary {
-                        self.weatherReport = weatherReport as NSDictionary
-                        
-                        //Check for an error message within the response
-                        if let errorMessage: NSString = weatherReport["message"] as? NSString {
-                            let errorCode: NSString = weatherReport["cod"] as NSString
-                            println(errorMessage + ", Code: " + errorCode)
-                            self.showErrorAlert(errorMessage)
-                        }
-                        else {
-                            println(response)
-                            let weatherDataArray = weatherReport["weather"] as NSArray
-                            let weatherDataDict = weatherDataArray[0] as NSDictionary
-                            self.detailDescriptionLabel.text = weatherDataDict["description"] as NSString
-                        }
-                        //extract image using http://openweathermap.org/weather-conditions
-                    }
-                    else {
-                        //Catch parsing error
-                        print("JSON Parse Error")
-                        self.showErrorAlert("JSON Parse Error")
-                    }
-                }
-                //Hide progress indicator
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            })
-            
-            //Show progress indicator
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            dataTask.resume()
-            
+            makeNetworkRequest(url)
         }
-        //Catch NSURL formation error
         else {
+            //Catch NSURL formation error
             showErrorAlert("Invalid URL. You Must Be Trying to Find A Really Weird Place")
+        }
+    }
+    
+    func makeNetworkRequest(url: NSURL) {
+        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: {data, response, error in
+            let response = NSString(data: data, encoding: NSUTF8StringEncoding)
+            
+            // Detect http request error
+            if error != nil {
+                self.showErrorAlert("You broke the Internet. Just send a screenshot of this to the developer to find out what went wrong: \(error)")
+            }
+            else {
+                println(response)
+                self.parseResult(data)
+            }
+            //Hide progress indicator
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
+        //Show progress indicator
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        dataTask.resume()
+    }
+    
+    func parseResult(data: NSData) {
+        // Parse JSON
+        if let weatherReport: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as?NSDictionary {
+            self.weatherReport = weatherReport as NSDictionary
+            
+            //Check for an error message within the response
+            if let errorMessage: NSString = weatherReport["message"] as? NSString {
+                let errorCode: NSString = weatherReport["cod"] as NSString
+                println(errorMessage + ", Code: " + errorCode)
+                self.showErrorAlert(errorMessage)
+            }
+            else {
+                let weatherDataArray = weatherReport["weather"] as NSArray
+                let weatherDataDict = weatherDataArray[0] as NSDictionary
+                self.detailDescriptionLabel.text = weatherDataDict["description"] as NSString
+                self.iconImageView.image = UIImage(named: weatherDataDict["icon"] as NSString)
+            }
+            //extract image using http://openweathermap.org/weather-conditions
+        }
+        else {
+            //Catch parsing error
+            print("JSON Parse Error")
+            self.showErrorAlert("JSON Parse Error")
         }
     }
     
