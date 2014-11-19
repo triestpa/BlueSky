@@ -26,7 +26,6 @@ class LocationTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
@@ -53,7 +52,6 @@ class LocationTableViewController: UITableViewController {
             }
         ))
         self.presentViewController(alert, animated: true, completion: nil)
-
     }
 
     // MARK: - Segues
