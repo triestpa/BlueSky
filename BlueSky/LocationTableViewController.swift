@@ -42,8 +42,9 @@ class LocationTableViewController: UITableViewController {
     func insertNewObject(sender: AnyObject) {
         var alert = UIAlertController(title: "New Location", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
+        let locationTextField = alert.textFields?.last as UITextField
+        locationTextField.placeholder = "Enter Location"
         alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { action in
-            let locationTextField = alert.textFields?.last as UITextField
             self.locations.insert(locationTextField.text, atIndex: 0)
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

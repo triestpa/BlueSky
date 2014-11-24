@@ -37,6 +37,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         if (weatherLocation != nil) {
             navigationItem.title = weatherLocation?
+            navigationController
             queryOpenWeather(Location: weatherLocation!)
         }
     }
@@ -53,7 +54,9 @@ class WeatherViewController: UIViewController {
         //Remove spaces to avoid malformed URLs
         let formatedLocation = location.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + formatedLocation + "&APPID=" + apiID
+        let urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + formatedLocation + "&APPID=" + apiID  + "&units=metric"
+        
+        println(urlString)
         
         if let url = NSURL(string: urlString as NSString) {
             makeNetworkRequest(url)
@@ -101,10 +104,10 @@ class WeatherViewController: UIViewController {
                 
                 let temperatureDict = weatherReport["main"] as NSDictionary
                 
-                self.currentTempLabel.text = (temperatureDict["temp"] as NSNumber).stringValue
+                self.currentTempLabel.text = (temperatureDict["temp"] as NSNumber).stringValue + " °C"
                 self.iconImageView.image = UIImage(named: weatherDataDict["icon"] as NSString)
-                self.minTempLabel.text = (temperatureDict["temp_min"] as NSNumber).stringValue
-                self.maxTempLabel.text = (temperatureDict["temp_max"] as NSNumber).stringValue
+                self.minTempLabel.text = (temperatureDict["temp_min"] as NSNumber).stringValue + " °C"
+                self.maxTempLabel.text = (temperatureDict["temp_max"] as NSNumber).stringValue + " °C"
                 self.weatherConditionLabel.text = weatherDataDict["description"] as NSString
             }
             //extract image using http://openweathermap.org/weather-conditions
