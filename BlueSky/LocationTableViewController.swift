@@ -12,7 +12,6 @@ class LocationTableViewController: UITableViewController {
 
     var weatherViewController: WeatherViewController? = nil
     var locations: [String] = [] // = NSMutableArray()
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,7 +47,7 @@ class LocationTableViewController: UITableViewController {
             self.locations.insert(locationTextField.text, atIndex: 0)
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Top)
+            self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
             self.performSegueWithIdentifier("showDetail", sender: self)
             }
         ))

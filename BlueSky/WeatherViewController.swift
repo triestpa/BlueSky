@@ -73,7 +73,7 @@ class WeatherViewController: UIViewController {
             
             // Detect http request error
             if error != nil {
-                self.showErrorAlert("You broke the Internet. Just send a screenshot of this to the developer, or try again in like an hour: \(error)")
+                self.showErrorAlert("Web Request Failed, Make Sure The Internet on Your Device is Working")
             }
             else {
                 println(response)
@@ -104,13 +104,16 @@ class WeatherViewController: UIViewController {
                 
                 let temperatureDict = weatherReport["main"] as NSDictionary
                 
-                self.currentTempLabel.text = (temperatureDict["temp"] as NSNumber).stringValue + " °C"
+                let currentTemp = temperatureDict["temp"] as NSNumber
+                
+                self.currentTempLabel.text = currentTemp.stringValue + " °C"
                 self.iconImageView.image = UIImage(named: weatherDataDict["icon"] as NSString)
                 self.minTempLabel.text = (temperatureDict["temp_min"] as NSNumber).stringValue + " °C"
                 self.maxTempLabel.text = (temperatureDict["temp_max"] as NSNumber).stringValue + " °C"
                 self.weatherConditionLabel.text = weatherDataDict["description"] as NSString
+                
+                setBackgroundPicture(weatherDataDict["id"] as Int)
             }
-            //extract image using http://openweathermap.org/weather-conditions
         }
         else {
             //Catch parsing error
@@ -125,10 +128,46 @@ class WeatherViewController: UIViewController {
         var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
             //TODO why doesnt this work?
             self.navigationController?.popToRootViewControllerAnimated(true)
+            //self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
             return
         })
         alert.addAction(okAction)
     }
     
+    
+    func setBackgroundPicture(code: Int) {
+        
+        println(code)
+        
+        var backgroudImage: UIImage
+        if (code < 600) {
+            backgroudImage = UIImage(named: "rain.png")!
+        }
+        else if (code < 700) {
+            backgroudImage = UIImage(named: "snow.png")!
+        }
+        else if (code == 800) {
+            backgroudImage = UIImage(named: "bluesky.png")!
+        }
+        else if (code < 800) {
+            backgroudImage = UIImage(named: "mist.png")!
+        }
+        else if (code < 900) {
+            backgroudImage = UIImage(named: "cloudy.png")!
+        }
+        else if (code < 950){
+            backgroudImage = UIImage(named: "rain.png")!
+        }
+        else {
+            backgroudImage = UIImage(named: "bluesky.png")!
+        }
+        
+        UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8,
+            options: .CurveEaseOut
+            , animations: {
+                self.view.backgroundColor = UIColor(patternImage: backgroudImage)
+            }, completion: nil)
+
+    }
 }
 
