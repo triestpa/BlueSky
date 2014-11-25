@@ -162,12 +162,7 @@ class WeatherViewController: UIViewController {
             backgroudImage = UIImage(named: "bluesky.png")!
         }
         
-        UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8,
-            options: .CurveEaseOut
-            , animations: {
-                self.view.backgroundColor = UIColor(patternImage: backgroudImage)
-            }, completion: nil)
-
+        self.view.backgroundColor = UIColor(patternImage: backgroudImage)
     }
 }
 

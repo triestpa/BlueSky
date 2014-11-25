@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0495751A24E4C800E1616E /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0495741A24E4C800E1616E /* Launch.storyboard */; };
 		CD56A6201A1D19C9000E12FF /* TraitOverrideSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */; };
 		CDEF41201A1BA021009D4827 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF411F1A1BA021009D4827 /* AppDelegate.swift */; };
 		CDEF41221A1BA021009D4827 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF41211A1BA021009D4827 /* LocationTableViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD0495741A24E4C800E1616E /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideSplitViewController.swift; sourceTree = "<group>"; };
 		CDEF411A1A1BA021009D4827 /* BlueSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEF411E1A1BA021009D4827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				CDEF41231A1BA021009D4827 /* WeatherViewController.swift */,
 				CD56A61F1A1D19C8000E12FF /* TraitOverrideSplitViewController.swift */,
 				CDEF41251A1BA021009D4827 /* Main.storyboard */,
+				CD0495741A24E4C800E1616E /* Launch.storyboard */,
 				CDEF41281A1BA021009D4827 /* Images.xcassets */,
 				CDEF412A1A1BA021009D4827 /* LaunchScreen.xib */,
 				CDEF411D1A1BA021009D4827 /* Supporting Files */,
@@ -201,6 +204,7 @@
 				CDEF41271A1BA021009D4827 /* Main.storyboard in Resources */,
 				CDEF412C1A1BA021009D4827 /* LaunchScreen.xib in Resources */,
 				CDEF41291A1BA021009D4827 /* Images.xcassets in Resources */,
+				CD0495751A24E4C800E1616E /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

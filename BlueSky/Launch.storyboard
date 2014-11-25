@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ofl-7S-tdW">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="6Bs-lf-X9L">
+            <objects>
+                <viewController id="Ofl-7S-tdW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F9V-nG-bfB"/>
+                        <viewControllerLayoutGuide type="bottom" id="m6f-yU-0FD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0LQ-uW-Fyj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluesky" translatesAutoresizingMaskIntoConstraints="NO" id="fbI-Jd-0rS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue Sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVP-ps-qSa">
+                                <rect key="frame" x="204" y="162" width="193" height="69"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patrick Triest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvg-X9-ALE">
+                                <rect key="frame" x="252" y="514" width="96" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="cVP-ps-qSa" secondAttribute="centerX" id="GI8-GN-dw5"/>
+                            <constraint firstItem="m6f-yU-0FD" firstAttribute="top" secondItem="rvg-X9-ALE" secondAttribute="bottom" constant="62" id="Guw-KX-63a"/>
+                            <constraint firstItem="fbI-Jd-0rS" firstAttribute="leading" secondItem="0LQ-uW-Fyj" secondAttribute="leading" id="Jlc-79-Fzr"/>
+                            <constraint firstItem="cVP-ps-qSa" firstAttribute="top" secondItem="F9V-nG-bfB" secondAttribute="bottom" constant="142" id="OdP-LF-ioS"/>
+                            <constraint firstAttribute="trailing" secondItem="fbI-Jd-0rS" secondAttribute="trailing" id="TEg-mT-XAH"/>
+                            <constraint firstAttribute="centerX" secondItem="rvg-X9-ALE" secondAttribute="centerX" id="atH-wz-eGX"/>
+                            <constraint firstAttribute="centerY" secondItem="fbI-Jd-0rS" secondAttribute="centerY" id="clZ-e9-Uyn"/>
+                            <constraint firstAttribute="centerY" secondItem="rvg-X9-ALE" secondAttribute="centerY" id="iLu-OV-qnW"/>
+                            <constraint firstItem="fbI-Jd-0rS" firstAttribute="top" secondItem="0LQ-uW-Fyj" secondAttribute="top" id="j75-KM-kY0"/>
+                            <constraint firstAttribute="centerX" secondItem="fbI-Jd-0rS" secondAttribute="centerX" id="jAk-9l-f7h"/>
+                            <constraint firstAttribute="centerY" secondItem="rvg-X9-ALE" secondAttribute="centerY" id="sH9-Ev-jdH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="iLu-OV-qnW"/>
+                                <exclude reference="sH9-Ev-jdH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GJS-N0-0n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="393"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bluesky" width="2144" height="1424"/>
+    </resources>
+</document>
